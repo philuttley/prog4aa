@@ -1,249 +1,124 @@
-[![Build Status](https://travis-ci.com/carpentries/workshop-template.svg?branch=gh-pages)](https://travis-ci.com/carpentries/workshop-template)
-
-# The Carpentries Workshop Template
-
-This repository is The Carpentries' ([Software Carpentry][swc-site], [Data Carpentry][dc-site], and
-[Library Carpentry][lc-site]'s) template for creating websites for workshops.
-
-1. **Please _do not fork this repository directly on GitHub._** Instead, please use GitHub's
-   "template" function following [the instructions below](#creating-a-repository) to copy this
-   `workshop-template` repository and customize it for your workshop.
-
-2. Please *do your work in your repository's `gh-pages` branch*, since that is what is
-   [automatically published as a website by GitHub][github-project-pages].
-
-3. Once you are done, please also [let us know][email] the workshop URL. If this is a self-organised
-   workshop, you should also [fill in the self-organized workshop
-   form][self-organized-workshop-form] (if you have not already done so), so we can keep track of
-   all workshops. We build the list of workshops on our websites from the data included in your
-   `index.md` page. We can only do that if you [customize][customization] that page correctly *and*
-   let us know the workshop URL.
-
-If you run into problems,
-or have ideas about how to make this process simpler,
-please [get in touch](#getting-and-giving-help).
-The pages on [customizing your website][customization],
-the [FAQ][faq],
-and the [design notes][design] have more detail on what we do and why.
-And please note:
-if you are teaching Git,
-please [create a separate repository](#setting-up-a-separate-repository-for-learners)
-for your learners to practice in.
-
-## Video Tutorial
-
-There is a [YouTube video](https://www.youtube.com/watch?v=_Ag1JiZzyUQ) that demonstrates how to
-create a workshop website.
-
-## Creating a Repository
-
-1.  Log in to GitHub.
-    (If you do not have an account, you can quickly create one for free.)
-    You must be logged in for the remaining steps to work.
-
-2.  On this page (<https://github.com/carpentries/workshop-template>),
-    click on the green "Use this template" button (top right)
-
-    ![screenshot of this repository's GitHub page with an arrow pointing to the the 'use this template' button on the top left](fig/select-github-use-template.png?raw=true)
-
-3.  Select the owner for your new repository.
-    (This will probably be you, but may instead be an organization you belong to.)
-
-4.  Choose a name for your workshop website repository.
-    This name should have the form `YYYY-MM-DD-site`,
-    e.g., `2016-12-01-oomza`,
-    where `YYYY-MM-DD` is the start date of the workshop.
-    If your workshop is held online, then the respository name should have `-online` in the end.
-    e.g., `2016-12-01-oomza-online`
-
-5.  Make sure the repository is public, leave "Include all branches" unchecked, and click
-on "Create repository from template".
-You will be redirected to your new copy of the workshop template respository.
-
-6. Your new website will be rendered at `https://your_username.github.io/YYYY-MM-DD-site`.
-For example, if your username is `gvwilson`, the website's URL will be
-`https://gvwilson.github.io/2016-12-01-oomza`.
-
-If you experience a problem, please [get in touch](#getting-and-giving-help).
-
-## Customizing Your Website (Required Steps)
-
-There are two ways of customizing your website. You can either:
-
-- edit the files directly in GitHub using your web browser
-- clone the repository on your computer and update the files locally
-
-### Updating the files on GitHub in your web browser
-
-1.  Go into your newly-created repository,
-    which will be at `https://github.com/your_username/YYYY-MM-DD-site`.
-    For example,
-    if your username is `gvwilson`,
-    the repository's URL will be `https://github.com/gvwilson/2016-12-01-oomza`.
-
-3.  Ensure you are on the gh-pages branch by clicking on the branch under the drop
-    down in the menu bar (see the note below):
-
-    ![screenshot of this repository's GitHub page showing the "Branch" dropdown menu expanded with the "gh-pages" branch selected](fig/select-gh-pages-branch.png?raw=true)
-
-3.  Edit the header of `index.md` to customize the list of instructors,
-    workshop venue, etc.
-    You can do this in the browser by clicking on it in the file view on GitHub
-    and then selecting the pencil icon in the menu bar:
-
-    ![screenshot of top menu bar for GitHub's file interface with the edit icon highlighted in the top right](fig/edit-index-file-menu-bar.png?raw=true)
-
-    Editing hints are embedded in `index.md`,
-    and full instructions are in [the customization instructions][customization].
-
-4.  Remove the notice about using the workshop template in the `index.md` file. You can safely
-    delete everything between the `{% comment %}` and `{% endcomment %}` (included) as indicated
-    below (about from line 35 to line 51):
-
-    ```jekyll
-    {% comment %} <------------ remove from this line
-    8< ============= For a workshop delete from here =============
-    For a workshop please delete the following block until the next dashed-line
-    {% endcomment %}
-
-    <div class="alert alert-danger">
-      ....
-    </div>
-
-    {% comment %}
-     8< ============================= until here ==================
-    {% endcomment %} <--------- until this line
-    ```
-
-4.  Edit `_config.yml` to customize certain site-wide variables, such as: `carpentry` (to tell your
-    participants the lesson program for your workshop), `curriculum` and `flavor` for the
-    curriculum  taught in your workshop, and `title` (overall title for all pages).
-
-    Editing hints are embedded in `_config.yml`,
-    and full instructions are in [the customization instructions][customization].
-
-5. Edit the `schedule.html` file to edit the schedule for your upcoming workshop. This file is
-   located in the `_includes` directory, make sure to choose the one from the appropriate `dc` (Data
-   Carpentry workshop), `lc` (Library Carpentry), or `swc` (Software Carpentry) subdirectory.
-
-### Working locally
-
-> Note: you don't have to do this, if you have already updated your site using the web interface.
-
-
-If you are already familiar with Git, you can clone the repository to your desktop, edit `index.md`,
-`_config.yml`, and `schedule.html` following the instruction above there, and push your changes back to the repository.
-
-```shell
-git clone https://github.com/your_username/YYYY-MM-DD-site
-```
-
-In order to view your changes once you are done editing, if you have bundler installed (see the
-[installation instructions below](#installing-software)), you can preview your site locally with:
-
-```shell
-make serve
-```
-and go to <http://0.0.0.0:4000> to preview your site.
-
-Before pushing your changes to your repository, we recommend that you also check for any potential
-issues with your site by running:
-
-```shell
-make workshop-check
-```
-
-Once you are satisfied with the edits to your site, commit and push the changes to your repository.
-A few minutes later, you can go to the GitHub Pages URL for your workshop site and preview it. In the example above, this is `https://gvwilson.github.io/2016-12-01-oomza`. [The finished
-page should look something like this](fig/completed-page.png?raw=true).
-
-
-## Optional but Recommended Steps
-
-
-### Update your repository description and link your website
-
-At the top of your repository on GitHub you'll see
-
-~~~
-No description, website, or topics provided. — Edit
-~~~
-
-Click 'Edit' and add:
-
-1.  A very brief description of your workshop in the "Description" box (e.g., "Oomza University workshop, Dec. 2016")
-
-2.  The URL for your workshop in the "Website" box (e.g., `https://gvwilson.github.io/2016-12-01-oomza`)
-
-This will help people find your website if they come to your repository's home page.
-
-### Update the content of the README file
-
-You can change the `README.md` file in your website's repository, which contains these instructions,
-so that it contains a short description of your workshop and a link to the workshop website.
-
-
-## Additional Notes
-
-**Note:**
-please do all of your work in your repository's `gh-pages` branch,
-since [GitHub automatically publishes that as a website][github-project-pages].
-
-**Note:**
-this template includes some files and directories that most workshops do not need,
-but which provide a standard place to put extra content if desired.
-See the [design notes][design] for more information about these.
-
-Further instructions are available in [the customization instructions][customization].
-This [FAQ][faq] includes a few extra tips (additions are always welcome)
-and these notes on [the background and design][design] of this template may help as well.
-
-
-## Creating Extra Pages
-
-In rare cases,
-you may want to add extra pages to your workshop website.
-You can do this by putting either Markdown or HTML pages in the website's root directory
-and styling them according to the instructions give in
-[the lesson template][lesson-example].
-
-
-## Installing Software
-
-If you want to set up Jekyll so that you can preview changes on your own machine before pushing them
-to GitHub, you must install the software described in the lesson example [setup
-instructions](https://carpentries.github.io/lesson-example/setup.html#jekyll-setup-for-lesson-development).
-
-## Setting Up a Separate Repository for Learners
-
-If you are teaching Git,
-you should create a separate repository for learners to use in that lesson.
-You should not have them use the workshop website repository because:
-
-* your workshop website repository contains many files that most learners don't need to see during
-  the lesson, and
-
-* you probably don't want to accidentally merge a damaging pull request from a novice Git user into
-  your workshop's website while you are using it to teach.
-
-You can call this repository whatever you like, and add whatever content you need to it.
-
-## Getting and Giving Help
-
-We are committed to offering a pleasant setup experience for our learners and organizers.
-If you find bugs in our instructions,
-or would like to suggest improvements,
-please [file an issue][issues]
-or [mail us][email].
-
-[email]: mailto:team@carpentries.org
-[customization]: https://carpentries.github.io/workshop-template/customization/index.html
-[dc-site]: https://datacarpentry.org
-[design]: https://carpentries.github.io/workshop-template/design/index.html
-[faq]: https://carpentries.github.io/workshop-template/faq/index.html
-[github-project-pages]: https://help.github.com/en/github/working-with-github-pages/creating-a-github-pages-site
-[issues]: https://github.com/carpentries/workshop-template/issues
-[lesson-example]: https://carpentries.github.io/lesson-example/
-[self-organized-workshop-form]: https://amy.carpentries.org/forms/self-organised/
-[swc-site]: https://software-carpentry.org
-[lc-site]: https://librarycarpentry.org
+# Programming with Python
+
+[![GitHub release][shields_release]][swc_py_releases]
+[![Create a Slack Account with us][create_slack_svg]][slack_heroku_invite]
+[![Slack Status][slack_channel_status]][slack_channel_url]
+
+An introduction to Python for non-programmers using inflammation data.
+
+## About the Lesson
+
+This lesson teaches novice programmers to write modular code to perform data analysis
+using Python. The emphasis, however, is on teaching language-agnostic principles of
+programming such as automation with loops and encapsulation with functions,
+see [Best Practices for Scientific Computing][best-practices] and
+[Good enough practices in scientific computing][good-practices] to learn more.
+
+The example used in this lesson analyses a set of 12 files with simulated inflammation
+data collected from a trial for a new treatment for arthritis. Learners are shown
+how it is better to automate analysis using functions instead of repeating analysis
+steps manually.
+
+The rendered version of the lesson is available at:
+<https://swcarpentry.github.io/python-novice-inflammation/>.
+
+This lesson is also available in [R][R] and [MATLAB][MATLAB].
+
+## Episodes
+
+| # |  Episode | Time | Question(s) |
+|--:|:---------|:----:|:------------|
+| 1 | [Python Fundamentals][episode01] | 30 | What basic data types can I work with in Python?<br>How can I create a new variable in Python?<br>Can I change the value associated with a variable after I create it? |
+| 2 | [Analyzing Patient Data][episode02] | 60 | How can I process tabular data files in Python? |
+| 3 | [Visualizing Tabular Data][episode03] | 50 | How can I visualize tabular data in Python?<br>How can I group several plots together? |
+| 4 | [Repeating Actions with Loops][episode04] | 30 | How can I do the same operations on many different values? |
+| 5 | [Storing Multiple Values in Lists][episode05] | 30 | How can I store many values together? |
+| 6 | [Analyzing Data from Multiple Files][episode06] | 20 | How can I do the same operations on many different files? |
+| 7 | [Making Choices][episode07] | 30 | How can my programs do different things based on data values? |
+| 8 | [Creating Functions][episode08] | 30 | How can I define new functions?<br>What’s the difference between defining and calling a function?<br>What happens when I call a function? |
+| 9 | [Errors and Exceptions][episode09] | 30 | How does Python report errors?<br>How can I handle errors in Python programs? |
+|10 | [Defensive Programming][episode10] | 30 | How can I make my programs more reliable? |
+|11 | [Debugging][episode11] | 30 | How can I debug my program? |
+|12 | [Command-Line Programs][episode12] | 30 | How can I write Python programs that will work like Unix command-line tools? |
+
+
+## Contributing
+[![Travis Build Status][travis_svg]][travis_url]
+
+We welcome all contributions to improve the lesson!
+Maintainers will do their best to help you if you have any questions, concerns,
+or experience any difficulties along the way.
+
+We'd like to ask you to familiarize yourself with our [Contribution Guide](CONTRIBUTING.md)
+and have a look at the [more detailed guidelines][lesson-example] on proper formatting,
+ways to render the lesson locally, and even how to write new episodes!
+
+## Maintainers
+
+Lesson maintainers are [Trevor Bekolay][trevor_bekolay], [Maxim Belkin][maxim_belkin],
+[Anne Fouilloux][anne_fouilloux], [Lauren Ko][lauren_ko], [Valentina Staneva][valentina_staneva], and [creator][swc_history] of Software Carpentry:
+[Greg Wilson][greg_wilson].
+
+## Authors
+A list of contributors to the lesson can be found in [AUTHORS](AUTHORS).
+
+## License
+Instructional material from this lesson is made available under the
+[Creative Commons Attribution][cc-by-human] ([CC BY 4.0][cc-by-legal]) license. Except where
+otherwise noted, example programs and software included as part of this lesson are made available
+under the [MIT license][mit-license]. For more information, see [LICENSE.md](LICENSE.md).
+
+## Citation
+To cite this lesson, please consult with [CITATION](CITATION).
+
+## About Software Carpentry
+
+Software Carpentry is a volunteer project that teaches basic computing skills to researchers since
+1998. More information about Software Carpentry can be found [here][swc-about].
+
+## About The Carpentries
+
+The Carpentries is a fiscally sponsored project of [Community Initiatives][community-initiatives], a
+registered 501(c)3 non-profit organisation based in California, USA. We are a global community
+teaching foundational computational and data science skills to researchers in academia, industry and
+government. More information can be found [here][cp-about].
+
+[lesson-example]: https://carpentries.github.io/lesson-example
+[anne_fouilloux]: https://github.com/annefou
+[lauren_ko]: https://github.com/ldko
+[maxim_belkin]: https://github.com/maxim-belkin
+[mike_trizna]: https://github.com/MikeTrizna
+[trevor_bekolay]: http://software-carpentry.org/team/#bekolay_trevor
+[valentina_staneva]: http://software-carpentry.org/team/#staneva_valentina
+[greg_wilson]: https://github.com/gvwilson
+[swc_history]: https://software-carpentry.org/scf/history/
+[best-practices]: http://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001745
+[good-practices]: http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005510
+[R]: https://github.com/swcarpentry/r-novice-inflammation
+[MATLAB]: https://github.com/swcarpentry/matlab-novice-inflammation
+[shields_release]: https://img.shields.io/github/release/swcarpentry/python-novice-inflammation.svg
+[swc_py_releases]: https://github.com/swcarpentry/python-novice-inflammation/releases
+[create_slack_svg]: https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg
+[slack_heroku_invite]: https://swc-slack-invite.herokuapp.com
+[slack_channel_status]: https://img.shields.io/badge/Slack_Channel-swc--py--inflammation-E01563.svg
+[slack_channel_url]: https://swcarpentry.slack.com/messages/C9Y0L6MF0
+[travis_svg]: https://travis-ci.org/swcarpentry/python-novice-inflammation.svg?branch=gh-pages
+[travis_url]: https://travis-ci.org/swcarpentry/python-novice-inflammation
+[episode01]: https://swcarpentry.github.io/python-novice-inflammation/01-intro/index.html
+[episode02]: https://swcarpentry.github.io/python-novice-inflammation/02-numpy/index.html
+[episode03]: https://swcarpentry.github.io/python-novice-inflammation/03-matplotlib/index.html
+[episode04]: https://swcarpentry.github.io/python-novice-inflammation/04-loop/index.html
+[episode05]: https://swcarpentry.github.io/python-novice-inflammation/05-lists/index.html
+[episode06]: https://swcarpentry.github.io/python-novice-inflammation/06-files/index.html
+[episode07]: https://swcarpentry.github.io/python-novice-inflammation/07-cond/index.html
+[episode08]: https://swcarpentry.github.io/python-novice-inflammation/08-func/index.html
+[episode09]: https://swcarpentry.github.io/python-novice-inflammation/09-errors/index.html
+[episode10]: https://swcarpentry.github.io/python-novice-inflammation/10-defensive/index.html
+[episode11]: https://swcarpentry.github.io/python-novice-inflammation/11-debugging/index.html
+[episode12]: https://swcarpentry.github.io/python-novice-inflammation/12-cmdline/index.html
+[community-initiatives]: https://communityin.org
+[cp-about]: https://carpentries.org/about
+[swc-about]: https://software-carpentry.org/about/
+[mit-license]: https://opensource.org/licenses/mit-license.html
+[cc-by-human]: https://creativecommons.org/licenses/by/4.0/
+[cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
