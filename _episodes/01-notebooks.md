@@ -321,7 +321,6 @@ Or use [named links][data_carpentry].
 > > `\sum` and `\approx` are LaTeX commands for "sum over" and "approximate" symbols. 
 > {: .solution}
 {: .challenge}
-~~~
 
 ## Keeping track
 
