@@ -1,6 +1,6 @@
 ---
 title: "Writing and running code in Jupyter Notebooks"
-teaching: 15
+teaching: 30
 exercises: 0
 questions:
 - "How can I easily write, test and run Python programs?"
