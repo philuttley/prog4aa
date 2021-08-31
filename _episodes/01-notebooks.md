@@ -335,7 +335,7 @@ If you have run cells out of sequence and want to start from the beginning again
 Sometimes you may find that the notebook stops running code, or that code you wrote  takes far too long to run, so you want to try another approach. In these cases you can interrupt and/or restart the notebook kernel (the computational engine that runs the code). You can do this via the menu bar at the top of the notebook. _Interrupt_ will interrupt the running of the code from the cell that is being run at the time and prevent any new cells from being run. _Restart_ is then required to start running code again. _Restart and Clear Output_ will also clear the memory of all outputs including variables stored in memory __and any loaded modules__. This can be useful if you are testing the code in a module and need to reload the new version to test again.
 
 <p align='center'>
-<img alt="Jupyter notebook menu bar showing menu for restarting/closing the kernel" src="../fig/notebook_menu_screenshot.png" width="400"/>
+<img alt="Jupyter notebook menu bar showing menu for restarting/closing the kernel" src="../fig/notebook_menu_screenshot.png" width="800"/>
 </p>
 
 
