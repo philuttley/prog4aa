@@ -8,10 +8,9 @@ The best way to learn how to program is to do something useful,
 so this introduction to Python is built around a common scientific task:
 **data analysis**.
 
-We will get to some astronomy-specific examples later on, but in one of the main example 
-data sets in this lesson, we are studying **inflammation in patients** who have been given a 
-new treatment for arthritis, and
-need to analyze the first dozen data sets of their daily inflammation. The data sets are stored in
+We will get to some astronomy-specific examples later on, but for the first part of the course we will focus on the data set used 
+for the Software Carpentry introduction to Python programming, which is a data set studying **inflammation in patients** who have been given a 
+new treatment for arthritis. Our goal will be to analyze the first dozen data sets of their daily inflammation. The data sets are stored in
 [comma-separated values]({{ page.root }}/reference/#comma-separated-values) (CSV) format:
 
 - each row holds information for a single patient,
@@ -34,6 +33,9 @@ So, we want to:
 2. Plot the result to discuss and share with colleagues.
 
 To do all that, we'll have to learn a little bit about programming.
+
+Following this introductory material, we will briefly introduce some tips on good Python programming style, before introducing the important
+Python modules for numerical work and data analysis in Astronomy and Astrophysics. These are Numpy, Scipy and Astropy.
 
 > ## Prerequisites
 >
