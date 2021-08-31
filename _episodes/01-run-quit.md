@@ -10,7 +10,6 @@ objectives:
 - "Create Markdown cells in a notebook."
 - "Create and run Python cells in a notebook."
 keypoints:
-- "Python scripts are plain text files."
 - "Use the Jupyter Notebook for editing and running Python."
 - "The Notebook has Command and Edit modes."
 - "Use the keyboard and mouse to select and edit cells."
@@ -21,9 +20,10 @@ keypoints:
 
 ## Use the Jupyter Notebook for editing and running Python.
 
-While it's common to write Python scripts using a text editor, we are going to use the [Jupyter Notebook][jupyter] for this course. 
+Python scripts are text files containing lines of Python code which are run sequentially by a Python interpreter.
+While it's common to write Python scripts using a text editor, which can be run from the command line, we are going to use the [Jupyter Notebook][jupyter] for this course. 
 This has several advantages:
-*   You can easily type, edit, and copy and paste blocks of code.
+*   You can easily type, edit, and copy and paste blocks of code, which can then be run to produce output, either within the notebook or separately (as for a regular Python script).
 *   Tab complete allows you to easily access the names of things you are using
         and learn more about them.
 *   It allows you to annotate your code with links, different sized text, bullets, etc.
@@ -320,6 +320,29 @@ Or use [named links][data_carpentry].
 > > `\sum` and `\approx` are LaTeX commands for "sum over" and "approximate" symbols. 
 > {: .solution}
 {: .challenge}
+~~~
+
+## Keeping track
+
+It's important to bear in mind that the notebook remembers the sequence that you run the cells. So even if cells follow a particular order in the notebook, you can run them out of sequence as long as the code allows it (e.g. required variables have been defined or calculated in one of the cells that has been run). The code will behave just as if it is written in the order that the cells are run. This can lead to confusing behaviour and errors if you run one or more cells out of sequence or skip over cells.
+
+If you have run cells out of sequence and want to start from the beginning again, you should _Restart_ the kernel _and Clear Output_ (see below).
+
+
+
+## Getting stuck: restarting the kernel
+
+Sometimes you may find that the notebook stops running code, or that code you wrote  takes far too long to run, so you want to try another approach. In these cases you can interrupt and/or restart the notebook kernel (the computational engine that runs the code). You can do this via the menu bar at the top of the notebook. _Interrupt_ will interrupt the running of the code from the cell that is being run at the time and prevent any new cells from being run. _Restart_ is then required to start running code again. _Restart and Clear Output_ will also clear the memory of all outputs including variables stored in memory __and any loaded modules__. This can be useful if you are testing the code in a module and need to reload the new version to test again.
+
+<p align='center'>
+<img alt="Jupyter notebook menu bar showing menu for restarting/closing the kernel" src="../fig/notebook_menu_screenshot.png" width="400"/>
+</p>
+
+
+## Saving and Quitting
+
+When you want to quit a notebook, be sure to save it first using _Save and Checkpoint_ in the _File_ menu.  In fact it is wise to save the notebook regularly if you are adding to it or making changes. It is also good practice to exit the notebook cleanly so it doesn't hang, using _Close and Halt_ in the _File_ menu, before closing the notebook browser tab.
+
 
 [anaconda]: https://docs.continuum.io/anaconda/install
 [jupyterlab-notebook-docs]: https://jupyterlab.readthedocs.io/en/stable/user/notebook.html
