@@ -15,6 +15,7 @@ keypoints:
 - "Use the keyboard and mouse to select and edit cells."
 - "The Notebook will turn Markdown into pretty-printed documentation."
 - "Markdown does most of what HTML does."
+- "Keep track of the sequence in which you run cells, and use kernel operations such as Restart and Clear Output to maintain control."
 ---
 
 
